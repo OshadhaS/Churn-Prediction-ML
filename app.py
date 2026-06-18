@@ -2,11 +2,29 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-# Load model
+# ---------------- PAGE CONFIG ----------------
+st.set_page_config(page_title="Churn Predictor", page_icon="📊", layout="centered")
+
+# ---------------- LOAD MODEL ----------------
 model = joblib.load("models/churn_model.pkl")
 
-# ---------------- UI ----------------
-st.title("📊 Customer Churn Prediction App")
+# ---------------- SIDEBAR ----------------
+st.sidebar.title("ℹ About App")
+st.sidebar.info("""
+This AI app predicts whether a customer will churn or not.
+
+Built using:
+- Python
+- Scikit-learn
+- Streamlit
+""")
+
+# ---------------- HEADER ----------------
+st.markdown("""
+# 📊 Customer Churn Prediction App
+Predict whether a customer will leave or stay using Machine Learning.
+""")
+
 st.write("Fill customer details below:")
 
 # ---------------- INPUTS ----------------
@@ -40,10 +58,10 @@ payment = st.selectbox("Payment Method", [
 
 monthly_charges = st.number_input("Monthly Charges", min_value=0.0)
 
-# Derived feature
+# ---------------- FEATURE ENGINEERING ----------------
 total_charges = monthly_charges * tenure
 
-# ---------------- PREDICT ----------------
+# ---------------- PREDICTION ----------------
 if st.button("Predict"):
 
     input_data = pd.DataFrame([{
@@ -70,12 +88,13 @@ if st.button("Predict"):
 
     prediction = model.predict(input_data)
 
-    # Probability (IMPORTANT upgrade)
+    # Probability
     try:
         prob = model.predict_proba(input_data)[0][1]
-        st.write(f"⚡ Churn Risk Score: **{prob:.2f}**")
+        st.progress(int(prob * 100))
+        st.write(f"⚡ **Churn Probability: {prob:.2%}**")
     except:
-        st.write("⚠ Probability not available for this model")
+        st.warning("Probability not available for this model")
 
     # Result
     if prediction[0] == 1:
