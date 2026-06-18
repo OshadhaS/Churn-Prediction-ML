@@ -88,15 +88,18 @@ source .venv/bin/activate
 pip install -r requirements.txt
 4. Run Streamlit app
 streamlit run app.py
+
 📈 Model Performance
 Accuracy: ~79–82%
 Balanced precision/recall for churn class
 Tuned using preprocessing pipeline
+
 🎯 Key Features
 User-friendly web interface
 Real-time churn prediction
 Probability risk score
 Handles categorical + numerical inputs
+
 📸 UI Preview
 
 (Add screenshots here later)
@@ -113,6 +116,7 @@ Try XGBoost / Random Forest
 Improve recall for churn class
 Add database logging (customer predictions)
 Deploy API version (FastAPI)
+
 📌 Note
 
 This is a beginner-to-intermediate level ML deployment project for learning and portfolio building.
