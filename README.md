@@ -98,11 +98,7 @@ Tuned using preprocessing pipeline
 User-friendly web interface
 Real-time churn prediction
 Probability risk score
-Handles categorical + numerical inputs
-
-📸 UI Preview
-
-(Add screenshots here later)
+Handles categorical + numerical input
 
 Example:
 
@@ -119,16 +115,4 @@ Deploy API version (FastAPI)
 
 📌 Note
 
-This is a beginner-to-intermediate level ML deployment project for learning and portfolio building.
-
-
----
-
-# 💡 AFTER THIS (IMPORTANT)
-
-Run:
-
-```bash
-git add README.md
-git commit -m "add professional README"
-git push
+This is a beginner-to-intermediate level ML deployment project for learning.
